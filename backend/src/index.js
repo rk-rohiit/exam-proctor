@@ -21,7 +21,7 @@ initSocket(server);
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: process.env.CLIENT_URL || 'https://exam-proctor-b94v01vug-rk-rohiits-projects.vercel.app/',
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
@@ -45,7 +45,7 @@ app.get('/api/health', (req, res) => {
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(err.status || 500).json({ 
+  res.status(err.status || 500).json({
     message: err.message || 'Internal Server Error',
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });
