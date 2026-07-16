@@ -21,7 +21,7 @@ initSocket(server);
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'https://exam-proctor-b94v01vug-rk-rohiits-projects.vercel.app/',
+  origin: process.env.CLIENT_URL || 'https://exam-proctor-xi.vercel.app',
   credentials: true,
 }));
 app.use(express.json({ limit: '10mb' }));
