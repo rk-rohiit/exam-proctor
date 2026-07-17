@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useRef, type ReactNode } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { useAuth } from './AuthContext';
+import { API_BASE } from '../utils/api';
 
 interface SocketContextType {
   socket: Socket | null;
@@ -16,7 +17,7 @@ export function SocketProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (!user) return;
-    const socket = io(import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000', {
+    const socket = io(API_BASE.replace('/api', ''), {
       transports: ['websocket'],
     });
     socketRef.current = socket;
